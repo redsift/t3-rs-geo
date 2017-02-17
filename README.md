@@ -45,7 +45,7 @@ This globe started out as a fork of Robert Scanlon's [encom-globe](https://githu
 
 ## Generating tiles
 
-The globe requires vertex data to render the globe and the various land masses. The precompiled bundle includes a row resolution hex grid as part of the `t3_rs_geo` object. Higher quality JSON files are also provided and can be loaded on demand. The companion repository [t3-rs-globe-tiles](https://github.com/redsift/t3-rs-globe-tiles) generates these tiles and can be used to tweak the grid and the mappings.
+The globe requires vertex data to render the globe and the various land masses. The precompiled bundle includes a row resolution hex grid as part of the `t3_rs_geo` object. Higher quality JSON files are also provided and can be loaded on demand. The companion repository [t3-rs-geo-tiles](https://github.com/redsift/t3-rs-geo-tiles) generates these tiles and can be used to tweak the grid and the mappings.
 
 ## Works on
 
