@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <style>
+    body {
+      margin: 0px;
+    }
+    </style>    
+  </head>
+  <body>
+    <div id="elm"></div>
+        
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="/t3-rs-geo.umd-es2015.min.js"></script>
+    <script>
+
+    'use strict';
+    d3.json('/grid-hq.json', function(world) {
+
+      var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, { 
+        background: 'white',
+        tiles: world.tiles
+      });
+
+      d3.select('#elm').node().append(globe.domElement);
+
+      globe.ready.then(() => {
+          (function tick() {
+              globe.tick();
+              requestAnimationFrame(tick);
+          })();
+
+          // Handle window resize events
+          window.addEventListener('resize', 
+                      (onWindowResize) => globe.resize(window.innerWidth, window.innerHeight)
+                      , false);
+      })
+      .catch(e => console.error(e));
+    });
+    </script>
+  </body>
+</html>

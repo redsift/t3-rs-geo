@@ -4,7 +4,7 @@ import {
     ShaderMaterial, VertexColors, DoubleSide, BufferGeometry, BufferAttribute,
     PerspectiveCamera, Scene, Fog, Color, Mesh, LineBasicMaterial, Geometry,
     Vector3, Line, Object3D, WebGLRenderer, ShaderChunk, 
-    VertexNormalsHelper
+//  VertexNormalsHelper
 } from 'three';
 
 import TWEEN from 'tween.js'
@@ -118,9 +118,9 @@ function Globe(width, height, opts){
     this.introDataDuration = opts.introDataDuration || View.IntroDataDuration_MS; // length of data animation
 
     this.opts = opts;
-    this.opts.background = this.opts.background || View.Color
-    this.opts.fog = this.opts.fog || View.Color
-    this.opts.font = this.opts.font || Labels.TextFont
+    this.opts.background = this.opts.background || View.Color;
+    this.opts.fog = this.opts.fog || this.opts.background;
+    this.opts.font = this.opts.font || Labels.TextFont;
 
     this.setScale(this.scale);
 

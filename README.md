@@ -15,19 +15,15 @@
 ```javascript
 <script src="/t3-rs-geo.umd-es2015.min.js"></script>
 <script>
-    var globe = new t3_rs_geo.ENCOM(window.innerWidth, window.innerHeight, {
-        data: [ ],
-        tiles: t3_rs_geo.GRID_LQ // use the included low quality grid
+    var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, { tiles: t3_rs_geo.GRID_LQ });
+    document.getElementById('elm').appendChild(globe.domElement);
+
+    globe.ready.then(() => {
+        (function tick() {
+            globe.tick();
+            requestAnimationFrame(tick);
+        })();
     });
-    d3.select('#elm').node().append(globe.domElement);
-    globe.ready
-        .then(() => {
-            // we are ready to animate
-            (function tick() {
-                globe.tick();
-                requestAnimationFrame(tick);
-            })();
-        });
 </script>
 ```
 

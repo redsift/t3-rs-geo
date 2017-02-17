@@ -23,7 +23,7 @@ export const Lines = {
 };
 
 export const Labels = {
-    TextFont: 'Raleway', //TODO: Reactor
+    TextFont: 'Verdana', 
     TextColor: Colors.Label,
     TextSize: 22,    
     TextPaddingX: 10,
