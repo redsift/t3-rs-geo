@@ -2,7 +2,9 @@
   "name": "t3-rs-geo",
   "version": "0.7.0",
   "description": "Stylized, WebGL data driven globe",
-  "main": "src/Globe.js",
+  "main": "distribution/t3-rs-geo.umd-es2015.js",
+  "browser": "distribution/t3-rs-geo.umd-es2015.min.js",
+  "jsnext:main": "index.js",
   "scripts": {
     "serve": "node --max-old-space-size=4096 ./node_modules/.bin/gulp -o t3-rs-geo serve",
     "build": "node --max-old-space-size=4096 ./node_modules/.bin/gulp -o t3-rs-geo build",
