@@ -5,16 +5,10 @@ import {
 } from 'three';
 
 import { hexToRgb, renderToCanvas, mapPoint } from './Utils'
-
 import { default as TextureAnimator } from './TextureAnimator'
 
-/*
-var TextureAnimator = require('./TextureAnimator'),
-    THREE = require('three'),
-    utils = require('./Utils');
-*/
 
-var createCanvas = function(numFrames, pixels, rows, waveStart, numWaves, waveColor, coreColor, shieldColor) {
+function createCanvas(numFrames, pixels, rows, waveStart, numWaves, waveColor, coreColor, shieldColor) {
 
     var cols = numFrames / rows;
     var waveInterval = Math.floor((numFrames-waveStart)/numWaves);

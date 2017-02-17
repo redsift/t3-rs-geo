@@ -74,6 +74,12 @@
             setTimeout(function(){
                 globe.addMarker(51.5074, -0.1278, "London");
                 globe.addMarker(50.1109, 8.6821, "Frankfurt", true);
+
+                globe.addSatellite(22.28552, 114.15769, 1.3, {
+                                coreColor: '#6f6',
+                                numWaves: 4
+                            });
+                globe.addSatellite(55.95206, -3.19648, 1.3, {});
             }, 2000);  
             setTimeout(function(){
                 globe.addMarker(19.07283, 72.88261, "Mumbai", true);

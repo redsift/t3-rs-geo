@@ -37,7 +37,7 @@
 
 ## History
 
-This globe started out as a fork of Robert Scanlon's [encom-globe](https://github.com/arscan/encom-globe). It was converted to a standalone project as the API and direction of the component departed from the objectives of the original. Significant changes include an update to the current (Jan 2017) version of THREE.js, rewrite as an ES6 module, use of mesh lines and [SDF](https://www.youtube.com/watch?v=CGZRHJvJYIg) rendering among other changes.
+This globe started out as a fork of Robert Scanlon's [encom-globe](https://github.com/arscan/encom-globe). It was converted to a standalone project as the API and direction of the component departed from the objectives of the original. Significant changes include an update to the current (Jan 2017) version of THREE.js, exposing mostly everything for customization, a rewrite as an ES6 module, use of mesh lines and [SDF](https://www.youtube.com/watch?v=CGZRHJvJYIg) rendering among other changes.
 
 ## Usage
 
