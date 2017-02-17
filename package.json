@@ -1,0 +1,56 @@
+{
+  "name": "t3-rs-geo",
+  "version": "0.7.0",
+  "description": "Stylized, WebGL data driven globe",
+  "main": "src/Globe.js",
+  "scripts": {
+    "serve": "node --max-old-space-size=4096 ./node_modules/.bin/gulp -o t3-rs-geo serve",
+    "build": "node --max-old-space-size=4096 ./node_modules/.bin/gulp -o t3-rs-geo build",
+    "pretest": "npm outdated || true && npm run build",
+    "test": "tape 'test/**/*-test.js'",
+    "posttest": "eslint index.js src",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redsift/t3-rs-geo.git"
+  },
+  "author": {
+    "name": "Rahul Powar",
+    "url": "https://medium.com/@rahulpowar"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "FontLoader": "^0.0.2",
+    "d3-color": "^1.0.2",
+    "d3-interpolate": "^1.1.3",
+    "quadtree2": "https://github.com/redsift/quadtree2.js/tarball/master",
+    "three": "^0.84.0",
+    "three.meshline": "https://github.com/redsift/THREE.MeshLine/tarball/master",
+    "tween.js": "^16.6.0",
+    "vec2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@redsift/tape-reel": "~0.1.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "browser-sync": "^2.14.0",
+    "del": "^2.2.2",
+    "eslint": "^3.3.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-json": "^2.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-string": "^2.0.2",
+    "rollup-stream": "^1.11.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^6.6.0"
+  }
+}
