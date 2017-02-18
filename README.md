@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/@redsift/t3-rs-geo.svg?style=flat-square)](https://www.npmjs.com/package/@redsift/t3-rs-geo)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/redsift/t3-rs-geo/master/LICENSE)
 
-`t3-rs-geo` is stylized, WebGL data driven globe.
+`t3-rs-geo` is a stylized, WebGL data driven globe.
 
 ## Screenshot
 
@@ -15,7 +15,7 @@
 ```javascript
 <script src="/t3-rs-geo.umd-es2015.min.js"></script>
 <script>
-    var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, { tiles: t3_rs_geo.GRID_LQ });
+    var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, {tiles: t3_rs_geo.GRID_LQ});
     document.getElementById('elm').appendChild(globe.domElement);
 
     globe.ready.then(() => {
@@ -35,7 +35,7 @@
 
 ## History
 
-This globe started out as a fork of Robert Scanlon's [encom-globe](https://github.com/arscan/encom-globe). It was converted to a standalone project as the API and direction of the component departed from the objectives of the original. Significant changes include an update to the current (Jan 2017) version of THREE.js, exposing mostly everything for customization, a rewrite as an ES6 module, use of mesh lines and [SDF](https://www.youtube.com/watch?v=CGZRHJvJYIg) rendering among other changes.
+This globe started out as a fork of Robert Scanlon's excellent [encom-globe](https://github.com/arscan/encom-globe). It was converted to a standalone project as the API and direction of the component departed from the objectives of the original. Significant changes include an update to the current (Jan 2017) version of THREE.js, exposing mostly everything for customization, a rewrite as an ES6 module, use of mesh lines and [SDF](https://www.youtube.com/watch?v=CGZRHJvJYIg) rendering among other changes.
 
 ## Usage
 
@@ -52,8 +52,6 @@ Chrome 56
 ## TODO
 
 1. Merge scale indicator
-1. CI
-
 1. Hit testing and callback
 1. Fog scaling
 1. Higher res con trails

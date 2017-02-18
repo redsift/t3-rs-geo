@@ -15,7 +15,7 @@ import Vec2 from 'vec2'
 import FontLoader from 'FontLoader'
 
 import { latLon2d, mapPoint } from './Utils'
-import { Render, View, Globes, Satellites, Labels } from './Defaults'
+import { Render, View, Globes, Satellites, Labels, Lines, Markers, Pins } from './Defaults'
 
 import { default as Satellite } from './Satellite'
 import { default as Marker } from './Marker'
@@ -186,6 +186,17 @@ Globe.prototype.addPin = function(lat, lon, text, opts) {
         altitude -= .05 + Math.random() * .05;
     }
 
+    opts = opts || { };
+    opts.pin = opts.pin || {};    
+    opts.pin.size = opts.pin.size || Pins.Canvas;
+    opts.pin.line = opts.pin.line || Pins.Color;
+    opts.pin.drawTime = opts.pin.drawTime || Pins.Draw_MS;
+    opts.pin.fadeTime = opts.pin.fadeTime || Pins.Fade_MS;
+
+    opts.label = opts.label || {};
+    opts.label.font = opts.label.font || { size: Pins.TextSize };
+    opts.label.font.name = opts.label.font.name || this.opts.font;
+
     const pin = new Pin(lat, lon, text, altitude, this.scene, this.smokeProvider, opts);
 
     this.pins.push(pin);
@@ -261,6 +272,28 @@ Globe.prototype.addMarker = function(lat, lon, text, connected, opts) {
         lon = lat.lon;
         lat = lat.lat;
     }
+
+    opts = opts || {};
+    opts = opts || {};
+    opts.lines = opts.lines || {};
+    opts.lines.color = opts.lines.color || Lines.Color;
+    opts.lines.segments = opts.lines.segments || Lines.Segments;
+    opts.lines.opacity = opts.lines.opacity || Lines.Opacity;
+    opts.lines.width = opts.lines.width || Lines.Width;
+    opts.lines.dotwiggle = opts.lines.dotwiggle || Lines.DotWiggle;
+    opts.lines.drawTime = opts.lines.drawTime || Lines.Draw_MS;
+
+    opts.marker = opts.marker || {};
+    opts.marker.size = opts.marker.size || Markers.Canvas;
+    opts.marker.opacity = opts.marker.opacity || Markers.Opacity;
+    opts.marker.scale = opts.marker.scale || Markers.Scale_MS;
+
+    opts.label = opts.label || {};
+    opts.label.font = opts.label.font || {};
+    opts.label.font.name = opts.label.font.name || this.opts.font;
+    opts.label.underline = opts.label.underline || {};
+    opts.label.fade = opts.label.fade || Labels.Fade_MS;
+
     let marker;
     const scale = () => this.scale;
     if (connected === true) {

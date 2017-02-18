@@ -9,7 +9,7 @@ import MeshLine from 'three.meshline'
 import TWEEN from 'tween.js'
 
 import { renderToCanvas, mapPoint, createLabel, latLonHaversine, PI_2 } from './Utils'
-import { Markers, Lines, Labels, Render } from './Defaults'
+import { Markers, Lines, Render } from './Defaults'
 
 const SPOT_NEXT = 1.2;
 
@@ -93,25 +93,7 @@ function Marker(lat, lon, text, altitude, scale, previous, scene, near, far, opt
         this.previous.next.push(this);
     }
 
-    opts = opts || {};
     this.opts = opts;
-    this.opts.lines = this.opts.lines || {};
-    this.opts.lines.color = this.opts.lines.color || Lines.Color;
-    this.opts.lines.segments = this.opts.lines.segments || Lines.Segments;
-    this.opts.lines.opacity = this.opts.lines.opacity || Lines.Opacity;
-    this.opts.lines.width = this.opts.lines.width || Lines.Width;
-    this.opts.lines.dotwiggle = this.opts.lines.dotwiggle || Lines.DotWiggle;
-    this.opts.lines.drawTime = this.opts.lines.drawTime || Lines.Draw_MS;
-
-    this.opts.marker = this.opts.marker || {};
-    this.opts.marker.size = this.opts.marker.size || Markers.Canvas;
-    this.opts.marker.opacity = this.opts.marker.opacity || Markers.Opacity;
-    this.opts.marker.scale = this.opts.marker.scale || Markers.Scale_MS;
-
-    this.opts.label = this.opts.label || {};
-    this.opts.label.font = this.opts.label.font || {};
-    this.opts.label.underline = this.opts.label.underline || {};
-    this.opts.label.fade = this.opts.label.fade || Labels.Fade_MS;
 
     let point = mapPoint(lat, lon);
 

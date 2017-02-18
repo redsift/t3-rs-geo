@@ -82,14 +82,16 @@ export function renderToCanvas(width, height, renderFunction) {
 }
 
 export function createLabel(text, font, underline, background) {
+    console.log(font, font.name);
+
     font = font || {};
-    font.font = font.font || Labels.TextFont;
+    font.name = font.name || Labels.TextFont;
     font.size = font.size || Labels.TextSize;
     font.color = font.color || Labels.TextColor;
 
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-    context.font = `${font.size}pt ${font.font}`;
+    context.font = `${font.size}pt ${font.name}`;
 
     const textWidth = context.measureText(text).width;
 
@@ -123,7 +125,7 @@ export function createLabel(text, font, underline, background) {
         context.fillRect(offset - Labels.TextPaddingX, 0, canvasWidth + 2*Labels.TextPaddingX, pow2Height);
     }
 
-    context.font = `${font.size}pt ${font.font}`;
+    context.font = `${font.size}pt ${font.name}`;
 
     context.textAlign = 'center';
     context.textBaseline = 'middle';

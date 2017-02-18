@@ -41,21 +41,11 @@ function Pin(lat, lon, text, altitude, scene, smokeProvider, opts) {
 
     const hasText = (text.length > 0);
 
-    opts = opts || { };
     this.opts = opts;
 
     this.opts.showLabel = this.opts.showLabel == null ? hasText : this.showLabel;
     this.opts.showTop = this.opts.showTop == null ? hasText : this.showTop;
     this.opts.showSmoke = this.opts.showSmoke == null ? hasText : this.showSmoke;
-
-    this.opts.pin = this.opts.pin || {};    
-    this.opts.pin.size = this.opts.pin.size || Pins.Canvas;
-    this.opts.pin.line = this.opts.pin.line || Pins.Color;
-    this.opts.pin.drawTime = this.opts.pin.drawTime || Pins.Draw_MS;
-    this.opts.pin.fadeTime = this.opts.pin.fadeTime || Pins.Fade_MS;
-
-    this.opts.label = this.opts.label || {};
-    this.opts.label.font = this.opts.label.font || { size: Pins.TextSize };
 
     /* the line */
     this.lineGeometry = new Geometry();

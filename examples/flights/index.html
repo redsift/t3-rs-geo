@@ -24,6 +24,15 @@
 
     'use strict';
 
+    /* 
+    * Data driven stylized Globe using WebGL and THREE.js
+    *
+    * Script: https://static.redsift.io/three/t3-rs-geo/latest/t3-rs-geo.umd-es2015.min.js
+    * Component Github: https://github.com/redsift/t3-rs-geo
+    *
+    * Demo: Locations, Pan, Zoom, Animation
+    */
+
     console.log('Browser supports WebGL', t3_rs_geo.browserSupportsWebGL());
     console.log('Supports WebGL', t3_rs_geo.supportsWebGL());
 
@@ -57,7 +66,8 @@
 
         var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, {
             data: initialData,
-            tiles: world.tiles // Could use the built in low res tiles: t3_rs_geo.GRID_LQ
+            tiles: world.tiles,
+            font: 'Raleway'
         });
 
         d3.select('#elm').node().append(globe.domElement);
