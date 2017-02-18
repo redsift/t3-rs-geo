@@ -1,6 +1,6 @@
 {
   "name": "t3-rs-geo",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Stylized, WebGL data driven globe",
   "main": "distribution/t3-rs-geo.umd-es2015.js",
   "browser": "distribution/t3-rs-geo.umd-es2015.min.js",
