@@ -10,6 +10,7 @@
     <div id="elm"></div>
         
     <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="//d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="/t3-rs-geo.umd-es2015.min.js"></script>
     <script>
 
@@ -18,6 +19,9 @@
 
       var globe = new t3_rs_geo.Globe(window.innerWidth, window.innerHeight, { 
         background: 'white',
+        globeColor: '#FEB9A6',
+        schemeColor: d3.interpolateRdPu,
+        introLinesColor: '#927C9C',
         tiles: world.tiles
       });
 

@@ -1,10 +1,13 @@
+import { interpolateRgbBasis } from "d3-interpolate";
+import { color } from 'd3-color'
+
 const Colors = {
     Markers: '#ffcc00',
     Pins: '#8fd8d8',
     Background: '#000',
     Label: '#fff',
     Trail: '#eee',
-    Land: '#ffcc00',
+    Water: '#03153d',
     _Highlight: '#ff0000'
 };
 
@@ -68,8 +71,25 @@ export const Satellites = {
     Color: Colors._Highlight
 }
 
+/*
+ * e.g. load color brewer values via
+ * import { interpolateYlOrBr as interpolateScheme } from 'd3-scale-chromatic'
+ * 
+ * interpolateGnBu - blue earth
+ * interpolateOrRd - red earth etc
+ * 
+ * Below is a custom 'brown' earth
+ */ 
 export const Globes = {
-    Color: Colors.Land
+    Color: Colors.Water,
+    Scheme: interpolateRgbBasis([ 
+                "rgb(252, 237, 177)",
+                "rgb(252, 220, 88)",
+                "rgb(252, 202, 3)",
+                "rgb(166, 133, 2)",
+                "rgb(166, 144, 58)",
+                "rgb(166, 156, 116)",
+                "rgb(77, 72, 54)"].map(color))
 }
 
 const introDuration_MS = 2000;
