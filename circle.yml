@@ -15,6 +15,7 @@ dependencies:
   override:
     - npm install
     - mv ./distribution ${CIRCLE_ARTIFACTS}/distribution
+    - cp ./tiles/*.json ${CIRCLE_ARTIFACTS}/distribution
 
 test:
   override:
