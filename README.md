@@ -27,9 +27,11 @@
 </script>
 ```
 
-[View the @redsift/t3-rs-geo 101 on Codepen](http://codepen.io/rahulpowar/pen/zNRrEL)
+[View the @redsift/t3-rs-geo 101 on Codepen](http://codepen.io/rahulpowar/pen/OWYzmr?editors=0010)
 
-[Interactive, High Quality example on Codepen](http://codepen.io/rahulpowar/pen/zNRrEL)
+[Custom colors, High Quality example on Codepen](http://codepen.io/rahulpowar/pen/EZzovW?editors=0010)
+
+[Interactive, High Quality example on Codepen](http://codepen.io/rahulpowar/pen/dNEJdm?editors=0010)
 
 ## History
 

@@ -31,9 +31,7 @@ deployment:
       - npm publish --access=public    
       - echo "Uploading to S3 bucket..."
       - aws s3 cp ${CIRCLE_ARTIFACTS}/distribution s3://$S3_BUCKET/three/$NAME/latest --recursive --acl public-read --cache-control max-age=7200,public
-      - aws s3 cp ${CIRCLE_ARTIFACTS}/tiles s3://$S3_BUCKET/three/$NAME/latest --recursive --acl public-read --cache-control max-age=7200,public
       - |
          VERSION=$(cat package.json | python -c 'import sys, json; print json.load(sys.stdin)["version"]')-$(git describe --exact-match --tags 2>/dev/null || git rev-parse --short HEAD)
          aws s3 cp ${CIRCLE_ARTIFACTS}/distribution s3://$S3_BUCKET/three/$NAME/$VERSION --recursive --acl public-read --cache-control max-age=31556926,public
-         aws s3 cp ${CIRCLE_ARTIFACTS}/tiles s3://$S3_BUCKET/three/$NAME/$VERSION --recursive --acl public-read --cache-control max-age=31556926,public
       - echo "S3 upload complete."
