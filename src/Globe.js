@@ -3,7 +3,7 @@
 import {
     ShaderMaterial, VertexColors, DoubleSide, BufferGeometry, BufferAttribute,
     PerspectiveCamera, Scene, Fog, Color, Mesh, LineBasicMaterial, Geometry,
-    Vector3, Line, Object3D, WebGLRenderer, ShaderChunk, 
+    Vector3, Line, Object3D, WebGLRenderer, ShaderChunk, Raycaster
 //  VertexNormalsHelper
 } from 'three';
 
@@ -69,6 +69,7 @@ function Globe(width, height, opts){
     this.satellites = {};
     this.quadtree = new Quadtree2({ size: new Vec2(180, 360), objectLimit: 5 });
     this.active = true;
+    this.hitObjects = [];
 
     // Adding odd hack to work with current packages
     this.quadtree.setKey('pos', 'pos_');
@@ -163,6 +164,7 @@ Globe.prototype.destroy = function(callback) {
         while (this.scene.children.length > 0){
             this.scene.remove(this.scene.children[0]);
         }
+        this.hitObjects = [];
         if (typeof callback == "function") {
             callback();
         }
@@ -173,6 +175,26 @@ Globe.prototype.resize = function(width, height) {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
+};
+
+Globe.prototype.intersect = function(xy) {
+    // compute the intersection with the xy point (array) in canvas coords
+    const raycaster = new Raycaster();
+    const pos = new Vec2();
+    pos.x = (xy[0] / this.renderer.domElement.width) * 2 - 1;
+    pos.y = -(xy[1] / this.renderer.domElement.height) * 2 + 1;
+
+    raycaster.ray.origin.copy(this.camera.position);
+    raycaster.ray.direction.set(pos.x, pos.y, 0.5).unproject(this.camera).sub(this.camera.position).normalize();
+
+    return raycaster.intersectObjects(this.hitObjects).map(o => ({
+        name: o.object.name,
+        data: o.object.userData,
+        uuid: o.object.uuid,
+        visible: o.object.visible,
+        distance: o.distance,
+        z: o.object.z
+    }));
 };
 
 Globe.prototype.addPin = function(lat, lon, text, opts) {
@@ -200,6 +222,12 @@ Globe.prototype.addPin = function(lat, lon, text, opts) {
     const pin = new Pin(lat, lon, text, altitude, this.scene, this.smokeProvider, opts);
 
     this.pins.push(pin);
+
+    // TODO: This model could be better
+    // add the scene elements to the hit test
+    this.hitObjects.push(pin.labelSprite);
+    this.hitObjects.push(pin.line);
+    this.hitObjects.push(pin.topSprite);
 
     // lets add quadtree stuff
 
@@ -308,7 +336,13 @@ Globe.prototype.addMarker = function(lat, lon, text, connected, opts) {
 
     if(this.markers.length > this.maxMarkers){
         this.markers.shift().remove();
+        //TODO: Remove markers from hit test
     }
+    
+    // TODO: This model could be better
+    // add the scene elements to the hit test
+    this.hitObjects.push(marker.labelSprite);
+    this.hitObjects.push(marker.marker);
 
     return marker;
 }
@@ -639,11 +673,13 @@ Globe.prototype.createParticles = function () {
     geometry.computeBoundingSphere();
     geometry.computeVertexNormals();
 
-    this.hexGrid = new Mesh( geometry, pointMaterial );
+    this.hexGrid = new Mesh(geometry, pointMaterial);
     this.scene.add(this.hexGrid);
     /* Display mesh normals for debugging
     this.scene.add(new VertexNormalsHelper(this.hexGrid, 10, 0x00ff00, 1));
      */
+
+    this.hitObjects.push(this.hexGrid);
 }
 
 Globe.prototype.createIntroLines = function () {

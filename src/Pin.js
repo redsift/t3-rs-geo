@@ -126,7 +126,11 @@ function Pin(lat, lon, text, altitude, scene, smokeProvider, opts) {
             .start();
 
     /* add to scene */
+    this.labelSprite.name = text;
+    this.line.name = text;
+    this.topSprite.name = text;
 
+    //TODO: Remove scene management from the children?
     this.scene.add(this.labelSprite);
     this.scene.add(this.line);
     this.scene.add(this.topSprite);

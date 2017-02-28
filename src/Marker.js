@@ -266,12 +266,16 @@ function Marker(lat, lon, text, altitude, scale, previous, scene, near, far, opt
         const trailMesh = new Mesh(this.meshLine.geometry, materialMeshSpline);
         trailMesh.frustumCulled = false;
 
+        //TODO: Hit test for path?
         this.scene.add(trailMesh);
 
         if (this.opts.lines.dotwiggle !== 0) {
             this.scene.add(new LineSegments(this.geometrySplineDotted, materialSplineDotted));
         }
     }
+    
+    this.marker.name = text;
+    this.labelSprite.name = text;
 
     this.scene.add(this.marker);
     this.scene.add(this.labelSprite);

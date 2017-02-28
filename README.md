@@ -52,7 +52,7 @@ Chrome 56
 ## TODO
 
 1. Merge scale indicator
-1. Hit testing and callback
+1. Add user data to hit testing
 1. Fog scaling
 1. Higher res con trails
 1. Noise in trail

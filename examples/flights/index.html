@@ -104,6 +104,14 @@
             var autoDayLength = globe.dayLength
             // Handle dragging
             d3.selectAll('#elm > canvas')
+            .on('click', function() {
+                if (d3.event.defaultPrevented) return; // dragged
+
+                // clicked
+                var pos = d3.mouse(this);
+
+                console.log('Clicked', pos, globe.intersect(pos));
+            })
             .call(d3.drag()
                 .on('start', () => {
                     // stop the auto-rotation

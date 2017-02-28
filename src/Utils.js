@@ -82,8 +82,6 @@ export function renderToCanvas(width, height, renderFunction) {
 }
 
 export function createLabel(text, font, underline, background) {
-    console.log(font, font.name);
-
     font = font || {};
     font.name = font.name || Labels.TextFont;
     font.size = font.size || Labels.TextSize;
